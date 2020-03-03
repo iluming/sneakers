@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhc.sneakers.dao.SneakersMapper">
+    <resultMap id="SneakersMapper" type="com.lhc.sneakers.entity.Sneakers">
+        <id column="sneakers_id" property="sneakersId"/>
+        <result property="speciesId" column="species_id"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="sneakersName" column="sneakers_name"/>
+        <result property="sneakersListedTime" column="sneakers_listed_time"/>
+        <result property="sneakersSex" column="sneakers_sex"/>
+        <result property="sneakersPrice" column="sneakers_price"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="sneakersInventory" column="sneakers_inventory"/>
+    </resultMap>
+
+    <select id="getSneakers" resultMap="SneakersMapper" parameterType="int">
+        select * from sneakers where sneakers_id = #{sneakersId};
+    </select>
+</mapper>
