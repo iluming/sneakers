@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhc.sneakers.dao.InputApplyMapper">
+    <resultMap id="InputApplyMapper" type="com.lhc.sneakers.entity.InputApply">
+        <id column="input_id" property="inputId"/>
+        <result property="sneakersId" column="sneakers_id"/>
+        <result property="color" column="color"/>
+        <result property="size" column="size"/>
+        <result property="num" column="num"/>
+        <result property="numUnit" column="num_unit"/>
+        <result property="applyTime" column="apply_time"/>
+        <result property="price" column="price"/>
+        <result property="totalPrice" column="total_price"/>
+        <result property="netWeight" column="net_weight"/>
+        <result property="invoiceNumber" column="invoice_number"/>
+        <result property="applicantId" column="applicant_id"/>
+        <result property="supplierId" column="supplier_id"/>
+        <result property="position" column="position"/>
+    </resultMap>
+
+   <insert id="addInputApply" parameterType="com.lhc.sneakers.entity.InputApply" useGeneratedKeys="true" keyColumn="inputId">
+INSERT INTO `input_apply` ( `sneakers_id`, `color`, `size`, `num`, `num_unit`, `apply_time`, `price`,
+`total_price`, `net_weight`, `invoice_number`, `applicant_id`, `supplier_id`, `position` )
+VALUES
+	(#{sneakersId}, #{color}, #{size}, #{num}, #{numUnit}, #{applyTime}, #{price}, #{totalPrice},
+	#{netWeight}, #{invoiceNumber}, #{applicantId}, #{supplierId}, #{position});
+   </insert>
+</mapper>

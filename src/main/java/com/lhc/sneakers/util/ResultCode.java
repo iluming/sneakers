@@ -17,6 +17,9 @@ public enum ResultCode {
     /** 没有登录 */
     NOT_LOGIN("600", "没有登录"),
 
+    /** 没有登录 */
+    NOT_ACCOUNT("601", "账号不存在,或密码错误"),
+
     /** 发生异常 */
     EXCEPTION("401", "发生异常"),
 
