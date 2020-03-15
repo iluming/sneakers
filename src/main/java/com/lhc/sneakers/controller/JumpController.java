@@ -19,6 +19,50 @@ public class JumpController {
         return "admin/index";
     }
 
+    @GetMapping(value = "/main")
+    public String main(){
+        return "admin/main";
+    }
+
+    @GetMapping(value = "/sneakers")
+    public String sneakers(){
+        return "admin/sneakers";
+    }
+
+    @GetMapping(value = "/inputApply")
+    public String inputApply(){
+        return "admin/inputApply";
+    }
+
+    @GetMapping(value = "/inputHistory")
+    public String inputHistory(){
+        return "admin/inputHistory";
+    }
+
+    @GetMapping(value = "/inputWait")
+    public String inputWait(){
+        return "admin/inputWait";
+    }
+
+    @GetMapping(value = "/outputApply")
+    public String outputApply(){
+        return "admin/outputApply";
+    }
+
+    @GetMapping(value = "/outputHistory")
+    public String outputHistory(){
+        return "admin/outputHistory";
+    }
+
+    @GetMapping(value = "/outputWait")
+    public String outputWait(){
+        return "admin/outputWait";
+    }
+
+    @GetMapping(value = "/inventoryInfo")
+    public String inventoryInfo(){
+        return "admin/inventoryInfo";
+    }
 
 
 }

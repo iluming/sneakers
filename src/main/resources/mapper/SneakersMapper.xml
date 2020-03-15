@@ -9,12 +9,16 @@
         <result property="brandId" column="brand_id"/>
         <result property="sneakersName" column="sneakers_name"/>
         <result property="sneakersListedTime" column="sneakers_listed_time"/>
-        <result property="sneakersSex" column="sneakers_sex"/>
         <result property="sneakersPrice" column="sneakers_price"/>
         <result property="updateTime" column="update_time"/>
         <result property="sneakersInventory" column="sneakers_inventory"/>
     </resultMap>
 
+    <select id="listSneakers" resultMap="SneakersMapper">
+SELECT s.*,b.brand_name
+FROM sneakers s
+LEFT JOIN brand b on b.brand_id = s.brand_id
+    </select>
     <select id="getSneakers" resultMap="SneakersMapper" parameterType="int">
         select * from sneakers where sneakers_id = #{sneakersId};
     </select>

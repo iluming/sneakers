@@ -18,13 +18,18 @@
         <result property="applicantId" column="applicant_id"/>
         <result property="supplierId" column="supplier_id"/>
         <result property="position" column="position"/>
+        <result property="status" column="status"/>
     </resultMap>
+
+    <select id="listInputApply" resultMap="InputApplyMapper">
+        select * from input_apply order by input_id desc
+    </select>
 
    <insert id="addInputApply" parameterType="com.lhc.sneakers.entity.InputApply" useGeneratedKeys="true" keyColumn="inputId">
 INSERT INTO `input_apply` ( `sneakers_id`, `color`, `size`, `num`, `num_unit`, `apply_time`, `price`,
-`total_price`, `net_weight`, `invoice_number`, `applicant_id`, `supplier_id`, `position` )
+`total_price`, `net_weight`, `invoice_number`, `applicant_id`, `supplier_id`, `position` ,`status`)
 VALUES
 	(#{sneakersId}, #{color}, #{size}, #{num}, #{numUnit}, #{applyTime}, #{price}, #{totalPrice},
-	#{netWeight}, #{invoiceNumber}, #{applicantId}, #{supplierId}, #{position});
+	#{netWeight}, #{invoiceNumber}, #{applicantId}, #{supplierId}, #{position} ,#{status});
    </insert>
 </mapper>

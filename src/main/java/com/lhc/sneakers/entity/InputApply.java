@@ -27,6 +27,7 @@ public class InputApply {
     private int applicantId;
     private int supplierId;
     private String position;
+    private String status;
 
 
 }

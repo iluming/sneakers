@@ -11,6 +11,10 @@
         <result property="icon" column="icon"/>
         <result property="company" column="company"/>
         <result property="telephone" column="telephone"/>
+        <result property="sector" column="sector"/>
+        <result property="partition" column="partition"/>
+        <result property="entryTime" column="entry_time"/>
+        <result property="createTime" column="create_time"/>
         <association property="role" javaType="com.lhc.sneakers.entity.Role" resultMap="com.lhc.sneakers.dao.RoleMapper.RoleMapper"/>
     </resultMap>
 
@@ -19,8 +23,9 @@
     </select>
 
     <insert id="addUser" parameterType="com.lhc.sneakers.entity.UserInfo"  useGeneratedKeys="true" keyColumn="userId">
-     INSERT INTO `user_info`( `account`, `pwd`, `user_name`, `icon`, `company`, `telephone`)
-     VALUES (#{account}, #{pwd}, #{userName}, #{icon}, #{company}, #{telephone});
+INSERT INTO `warehouse`.`user_info`( `account`, `pwd`, `user_name`, `icon`, `company`, `telephone`, `sector`, `partition`, `create_time`)
+ VALUES ( #{account}, #{pwd}, #{userName}, #{icon}, #{company}, #{telephone}, #{sector}, #{partition}, #{createTime});
+
     </insert>
 
     <select id="getUser" parameterType="com.lhc.sneakers.entity.UserInfo" resultMap="UserInfoMapper">
@@ -32,7 +37,7 @@
 		LEFT JOIN user_role ur ON ur.user_id = ui.user_id
 		LEFT JOIN role r ON r.role_id = ur.role_id
     <trim prefix="where" prefixOverrides="and">
-        <if test="account == null">
+        <if test="account == null || account ==0">
           and  ui.user_name LIKE CONCAT( '%', #{name}, '%' );
         </if>
         <if test="userName == null">
@@ -44,7 +49,7 @@
     <select id="doLogin" parameterType="com.lhc.sneakers.entity.UserInfo" resultMap="UserInfoMapper">
 SELECT
 	ui.*,
-	r.role_name
+	IFNULL(r.role_id,0) AS role_id
 FROM
 	user_info ui
 	LEFT JOIN user_role ur ON ur.user_id = ui.user_id

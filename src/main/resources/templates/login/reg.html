@@ -12,36 +12,29 @@
 </head>
 <body>
     <div id="ajax-hook"></div>
-    <div class="wrap">
+    <div class="wrap" id="register">
         <div class="wpn">
             <div class="form-data pos">
            <!--     <a href=""><img th:src="@{/img/bj.jpg}" class="head-logo"></a>-->
                 <!--<p class="tel-warn hide"><i class="icon-warn"></i></p>-->
                 <form>
+                    <p class="p-input pos" >
+                        <input v-model="user.partition" placeholder="所属公司分区" type="text">
+                    </p>
                     <p class="p-input pos">
-                        <label for="tel">手机号</label>
-                        <input type="number" id="tel" autocomplete="off">
-                        <span class="tel-warn tel-err hide"><em></em><i class="icon-warn"></i></span>
+                        <input v-model="user.userName" placeholder="名字" type="text">
                     </p>
-                    <p class="p-input pos" id="sendcode">
-                        <label for="veri-code">输入验证码</label>
-                        <input type="number" id="veri-code">
-                        <a href="javascript:;" class="send">发送验证码</a>
-                        <span class="time hide"><em>120</em>s</span>
-                        <span class="error hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    <p class="p-input pos s">
+                        <input v-model="user.telephone" placeholder="手机" type="text">
                     </p>
-                    <p class="p-input pos hide" id="pwd">
-                        <label for="passport">输入密码</label>
-                        <input type="password" style="display: none"/>
-                        <input type="password" id="passport">
-                        <span class="tel-warn pwd-err hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+                    <p class="p-input pos">
+                        <input v-model="user.sector" placeholder="所属部门" type="text">
                     </p>
-                    <p class="p-input pos hide" id="confirmpwd">
-                        <label for="passport2">确认密码</label>
-                        <input type="password" style="position:absolute;top:-998px"/>
-                        <input type="password" id="passport2">
-                        <span class="tel-warn confirmpwd-err hide"><em></em><i class="icon-warn" style="margin-left: 5px"></i></span>
+
+                    <p class="p-input pos " >
+                        <input v-model="user.pwd" placeholder="密码" type="text">
                     </p>
+
                 </form>
                 <div class="reg_checkboxline pos">
                     <span class="z"><i class="icon-ok-sign boxcol" nullmsg="请同意!"></i></span>
@@ -49,7 +42,7 @@
                     <div class="Validform_checktip"></div>
                     <p>我已阅读并接受 <a href="#" target="_brack">《君凌球鞋协议说明》</a></p>
                 </div>
-                <button class="lang-btn">注册</button>
+                <button class="lang-btn" @click="reg">注册</button>
                 <div class="bottom-info">已有账号，<a th:href="@{login}">马上登录</a></div>
                 <div class="third-party">
                     <a href="#" class="log-qq icon-qq-round"></a>
@@ -61,7 +54,12 @@
         </div>
     </div>
     <script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/js/reg.js}"></script>
     <script type="text/javascript" th:src="@{/js/agree.js}"></script>
     <script type="text/javascript" th:src="@{/js/login.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/vue.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/axios.min.js}"></script>
+
 </body>
 </html>

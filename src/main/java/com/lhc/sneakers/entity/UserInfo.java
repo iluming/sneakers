@@ -1,5 +1,6 @@
 package com.lhc.sneakers.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.data.annotation.Transient;
 
@@ -7,18 +8,24 @@ import org.springframework.data.annotation.Transient;
 public class UserInfo {
 
     private int userId;
-    private int account;
+    private String  account;
     private String pwd;
     private String userName;
     private String icon;
     private String company;
-    private int telephone;
+    private String telephone;
+    private String sector;  //部门
+    private String partition; //所属公司分区
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private String entryTime;
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+    private String createTime;
 
     @Transient
     private Role role;
 
     public UserInfo(){}
-    public UserInfo(int account, String pwd) {
+    public UserInfo(String account, String pwd) {
         this.account = account;
         this.pwd = pwd;
     }
