@@ -3,6 +3,7 @@ package com.lhc.sneakers.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.data.annotation.Transient;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -28,6 +29,15 @@ public class InputApply {
     private int supplierId;
     private String position;
     private String status;
+
+    @Transient
+    private int sumNum;
+    @Transient
+    private String sneakersName;
+    @Transient
+    private String applicant;
+    @Transient
+    private String supplier;
 
 
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="admin/global::html('球鞋管理')" ></head>
+<head th:include="admin/global::html('入库管理')" ></head>
 
 <body>
 <section class="layui-larry-box" >
@@ -32,6 +32,8 @@
                           <thead>
                               <tr>
                                   <th>ID</th>
+                                  <th>申请人</th>
+                                  <th>供应商</th>
                                   <th>球鞋名字</th>
                                   <th>颜色</th>
                                   <th>码数</th>
@@ -42,8 +44,6 @@
                                   <th>总价</th>
                                   <th>净重</th>
                                   <th>发票号码</th>
-                                  <th>申请人</th>
-                                  <th>供应商</th>
                                   <th>仓位</th>
                                   <th>状态</th>
                               </tr>
@@ -52,7 +52,9 @@
 
                           <tr v-for="inputApply in inputApplies ">
                               <td>{{inputApply.inputId}}</td>
-                              <td>{{inputApply.sneakersId}}</td>
+                              <td>{{inputApply.applicant}}</td>
+                              <td>{{inputApply.supplier}}</td>
+                              <td>{{inputApply.sneakersName}}</td>
                               <td>{{inputApply.color}}</td>
                               <td>{{inputApply.size}}</td>
                               <td>{{inputApply.num}}</td>
@@ -62,8 +64,6 @@
                               <td>{{inputApply.totalPrice}}</td>
                               <td>{{inputApply.netWeight}}</td>
                               <td>{{inputApply.invoiceNumber}}</td>
-                              <td>{{inputApply.applicantId}}</td>
-                              <td>{{inputApply.supplierId}}</td>
                               <td>{{inputApply.position}}</td>
                               <td>{{inputApply.status}}</td>
                           </tr>

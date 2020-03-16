@@ -22,7 +22,20 @@
     </resultMap>
 
     <select id="listInputApply" resultMap="InputApplyMapper">
-        select * from input_apply order by input_id desc
+    SELECT
+	ui.user_name AS applicant,
+	uii.user_name AS supplier,
+	s.sneakers_name,
+	ia.*
+    FROM
+	`input_apply` ia
+	LEFT JOIN sneakers s ON s.sneakers_id = ia.sneakers_id
+	LEFT JOIN user_info ui ON ui.user_id = ia.applicant_id
+	LEFT JOIN user_info uii ON uii.user_id = ia.supplier_id
+    WHERE
+	ia.`status` = '待审核'
+    ORDER BY
+	ia.input_id DESC
     </select>
 
    <insert id="addInputApply" parameterType="com.lhc.sneakers.entity.InputApply" useGeneratedKeys="true" keyColumn="inputId">
@@ -32,4 +45,16 @@ VALUES
 	(#{sneakersId}, #{color}, #{size}, #{num}, #{numUnit}, #{applyTime}, #{price}, #{totalPrice},
 	#{netWeight}, #{invoiceNumber}, #{applicantId}, #{supplierId}, #{position} ,#{status});
    </insert>
+
+    <select id="yesInputApply" resultMap="InputApplyMapper" parameterType="map">
+        SELECT s.sneakers_name,ia.*,SUM(ia.num) AS sum_num FROM `input_apply` ia
+        LEFT JOIN sneakers s on s.sneakers_id = ia.sneakers_id
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="startTime != null">
+                AND ia.apply_time  <![CDATA[>=]]> #{startTime}
+                AND ia.apply_time  <![CDATA[<=]]> #{endTime}
+            </if>
+            AND ia.`status` = '已确认' GROUP BY ia.sneakers_id
+        </trim>
+    </select>
 </mapper>

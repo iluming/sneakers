@@ -47,4 +47,20 @@ public class InputApplyController {
         inputApplyService.addInputApply(inputApply);
         return ResultUtil.success();
     }
+
+    /***
+     * 首页 入库出库的数据
+     * @return
+     */
+    @GetMapping("mainInputApply")
+    public Map mainInputApply(@RequestParam(value="pageNo",defaultValue="1")int pageNo,
+                              @RequestParam(value="pageSize",defaultValue="10")int pageSize){
+        Map map = new HashMap();
+        Map map1 = inputApplyService.yesInputApply(pageNo,pageSize);
+
+        map.put("inputApplyList",map1);
+        return map;
+
+
+    }
 }

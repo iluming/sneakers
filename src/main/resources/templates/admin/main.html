@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="./static/css/main.css" media="all" th:href="@{/css/main.css}">
 </head>
 <body>
-<section class="larry-wrapper">
+<section class="larry-wrapper" id="main">
     <!-- overview -->
 	<div class="row state-overview">
 		<div class="col-lg-3 col-sm-6 layui-anim layui-anim-up">
@@ -24,10 +24,11 @@
 				<div class="symbol userblue layui-anim layui-anim-rotate"> <i class="iconpx-users"></i>
 				</div>
 				<div class="value">
-					<a href="#">
-						<h1 id="count1">199</h1>
+					<!--<a href="/sneakerWarehouse/inputApply">-->
+                    <a  href="#">
+						<h1 id="count1"  v-text = "lastWeekInputNum"></h1>
 					</a>
-					<p>昨天入库申请量</p>
+					<p>上周入库申请量(双)</p>
 				</div>
 			</section>
 		</div>
@@ -37,9 +38,9 @@
 				</div>
 				<div class="value">
 					<a href="#">
-						<h1 id="count2">11666</h1>
+						<h1 id="count2" v-text = "totalInputNum"></h1>
 					</a>
-					<p>入库总量</p>
+					<p>入库总量(双)</p>
 				</div>
 			</section>
 		</div>
@@ -52,7 +53,7 @@
 					<a href="#">
 						<h1 id="count3">222</h1>
 					</a>
-					<p>昨天出库申请量</p>
+					<p>上周出库申请量(双)</p>
 				</div>
 			</section>
 		</div>
@@ -65,7 +66,7 @@
 					<a href="#">
 						<h1 id="count4">6868</h1>
 					</a>
-					<p>出库总量</p>
+					<p>出库总量(双)</p>
 				</div>
 			</section>
 		</div>
@@ -249,6 +250,9 @@
 
 </section>
 
+<script type="text/javascript" th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript" th:src="@{/js/vue.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/axios.min.js}"></script>
 <script type="text/javascript" src="layui/layui.js"></script>
 <script type="text/javascript">
 	layui.use(['jquery','layer','element'],function(){
@@ -270,6 +274,6 @@
 	});
 </script>
 <script type="text/javascript" src="jsplug/echarts.min.js" ></script>
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript"  th:src="@{js/admin/main.js}"></script>
 </body>
 </html>
