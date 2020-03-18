@@ -4,7 +4,7 @@
 
 <body>
 <section class="layui-larry-box" >
-	<div class="larry-personal" id="inputApply">
+	<div class="larry-personal" id="inputApply" >
 	    <div class="layui-tab">
             <blockquote class="layui-elem-quote news_search">
 		
@@ -17,12 +17,6 @@
 			<a class="layui-btn layui-btn-normal newsAdd_btn">入库申请</a>
 		</div>
 
-		<div class="layui-inline">
-			<a class="layui-btn layui-btn-danger batchDel">删除申请</a>
-		</div>
-		<div class="layui-inline">
-			<div class="layui-form-mid layui-word-aux">本页面刷新后除新添加的文章外所有操作无效，关闭页面所有数据重置</div>
-		</div>
 	</blockquote>
             
 		    <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
@@ -46,6 +40,7 @@
                                   <th>发票号码</th>
                                   <th>仓位</th>
                                   <th>状态</th>
+                                  <th>操作</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -66,6 +61,13 @@
                               <td>{{inputApply.invoiceNumber}}</td>
                               <td>{{inputApply.position}}</td>
                               <td>{{inputApply.status}}</td>
+                              <td>
+                                  <div class="layui-btn-container">
+                                      <button  v-if="inputApply.status == '待审核'" type="button" class="layui-btn  layui-btn-sm layui-btn-normal">正在审核</button>
+                                      <button v-else type="button" class="layui-btn layui-btn-sm layui-btn-warm">退回编辑</button>
+                                      <button type="button" class="layui-btn layui-btn-sm layui-btn-danger"  @click="deleteInput(inputApply.inputId)">删除申请</button>
+                                  </div>
+                              </td>
                           </tr>
                           </tbody>
                      </table>

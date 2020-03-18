@@ -116,7 +116,7 @@
                         <dd>
                             <a href="javascript:;" data-url="/sneakerWarehouse/inputApply">
                                 <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
-                                <span>入库申请</span>
+                                <span>我的入库申请</span>
                             </a>
                         </dd>
                         <dd th:if="${session.UserInfo.role.roleId == 2 || session.UserInfo.role.roleId == 3}">
@@ -145,7 +145,7 @@
                         <dd>
                             <a href="javascript:;" data-url="/sneakerWarehouse/outputApply">
                                 <i class="iconfont icon-yonghu1" data-icon='icon-yonghu1'></i>
-                                <span>出库申请</span>
+                                <span>我的出库申请</span>
                             </a>
                         </dd>
                         <dd th:if="${session.UserInfo.role.roleId == 2 || session.UserInfo.role.roleId == 3}">
@@ -189,7 +189,7 @@
                         <em class="layui-nav-more"></em>
                     </a>
                     <dl class="layui-nav-child">
-                        <dd>
+                       <!-- <dd>
                             <a href="javascript:;" data-url="personInfo.html">
                                 <i class="iconfont icon-geren1" data-icon='icon-geren1'></i>
                                 <span>出库报表信息</span>
@@ -206,7 +206,7 @@
                                 <i class="iconfont icon-piliangicon" data-icon='icon-piliangicon'></i>
                                 <span>货物在途报表信息</span>
                             </a>
-                        </dd>
+                        </dd>-->
 						<dd>
 							<a href="javascript:;" data-url="myloginfo.html">
 								<i class="iconfont icon-piliangicon" data-icon='icon-piliangicon'></i>
@@ -231,7 +231,7 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;">
+                            <a href="javascript:;" data-url="/sneakerWarehouse/personInfo">
                                 <i class="iconfont icon-jiaoseguanli" data-icon='icon-zhuti'></i>
                                 <span>用户管理</span>
                             </a>
@@ -241,7 +241,7 @@
                 </li>
 
 
-                <!-- 系统设置 -->
+              <!--  &lt;!&ndash; 系统设置 &ndash;&gt;
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="iconfont icon-xitong"></i>
@@ -292,7 +292,7 @@
                             </a>
                         </dd>
                     </dl>
-                </li>
+                </li>-->
 
             </ul>
         </div>

@@ -8,7 +8,9 @@ import com.lhc.sneakers.service.SneakersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SneakersServiceImp implements SneakersService {
@@ -26,7 +28,21 @@ public class SneakersServiceImp implements SneakersService {
 
     @Override
     public Sneakers getSneaker(int sneakerId) {
-
         return sneakersMapper.getSneakers(sneakerId);
+    }
+
+    @Override
+    public void addSneakers(Sneakers sneakers) {
+        sneakersMapper.addSneakers(sneakers);
+    }
+
+    @Override
+    public void upDateSneakers(Sneakers sneakers) {
+        sneakersMapper.upDateSneakers(sneakers);
+    }
+
+    @Override
+    public void deleteSneakers(int sneakersId) {
+        sneakersMapper.deleteSneakers(sneakersId);
     }
 }

@@ -187,6 +187,7 @@ $(function(){
 							var result = data.msg;
 			                if (data.code == '0') {
 			                    // globalTip({'msg':'登录成功!','setTime':3,'jump':true,'URL':'http://www.ui.cn'});
+								// sessionStorage.setItem("UserInfo",)
 								location.href="admin";
 			                } else if(data.code == '2') {
 			                	$(".log-btn").off('click').addClass("off");

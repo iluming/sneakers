@@ -4,7 +4,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lhc.sneakers.dao.InputApplyMapper;
 import com.lhc.sneakers.entity.InputApply;
-import com.lhc.sneakers.entity.Sneakers;
 import com.lhc.sneakers.service.InputApplyService;
 import com.lhc.sneakers.util.DateTimeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +21,13 @@ public class InputApplyServiceImp implements InputApplyService {
     InputApplyMapper inputApplyMapper;
 
     @Override
-    public PageInfo<InputApply> listInputApply(int pageNo, int pageSize) {
+    public PageInfo<InputApply> listInputApply(int pageNo, int pageSize,int applicantId,int code) {
+        Map map = new HashMap();
+        map.put("applicantId",applicantId);
+        map.put("code",code);
+
         PageHelper.startPage(pageNo,pageSize);
-        List<InputApply> inputApplyList =  inputApplyMapper.listInputApply();
+        List<InputApply> inputApplyList =  inputApplyMapper.listInputApply(map);
         PageInfo<InputApply> page = new PageInfo<InputApply>(inputApplyList);
         return page;
     }
@@ -65,6 +68,30 @@ public class InputApplyServiceImp implements InputApplyService {
         map.put("lastWeekInputNum",sumNum(lastWeekInput));
         return map;
     }
+
+    /**
+     * 停用
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    @Override
+    public Map sumInputApply(int pageNo, int pageSize) {
+        Map map = new HashMap();
+
+        return null;
+    }
+
+    @Override
+    public void deleteInputApply(int inputApplyId) {
+        inputApplyMapper.deleteInputApply(inputApplyId);
+    }
+
+    @Override
+    public void updateInputStatus(Map map) {
+        inputApplyMapper.updateInputStatus(map);
+    }
+
 
     public int sumNum(List<InputApply> inputApplies){
         int sumNum = 0;

@@ -4,14 +4,14 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.lhc.sneakers.entity.InputApply;
 import com.lhc.sneakers.entity.Sneakers;
+import com.lhc.sneakers.exception.MyException;
 import com.lhc.sneakers.service.SneakersService;
 import com.lhc.sneakers.util.Page;
+import com.lhc.sneakers.util.ResultCode;
+import com.lhc.sneakers.util.ResultUtil;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,5 +45,35 @@ public class SneakersController {
         Sneakers sneakers = sneakersService.getSneaker(sneakersId);
         map.put("sneakers",sneakers);
         return map;
+    }
+
+    @PostMapping("/addSneakers")
+    public Object addSneakers(@RequestBody Sneakers sneakers){
+        try{
+            sneakersService.addSneakers(sneakers);
+        }catch (Exception e){
+            throw new MyException(ResultCode.PARAMS_ERROR);
+        }
+        return ResultUtil.success();
+    }
+
+    @PutMapping("/upDateSneakers")
+    public Object upDateSneakers(@RequestBody Sneakers sneakers){
+        try{
+            sneakersService.upDateSneakers(sneakers);
+        }catch (Exception e){
+            throw new MyException(ResultCode.PARAMS_ERROR);
+        }
+        return ResultUtil.success();
+    }
+
+    @DeleteMapping("/deleteSneakers")
+    public Object deleteSneakers(int sneakersId){
+        try{
+            sneakersService.deleteSneakers(sneakersId);
+        }catch (Exception e){
+            throw new MyException(ResultCode.PARAMS_ERROR);
+        }
+        return ResultUtil.success();
     }
 }

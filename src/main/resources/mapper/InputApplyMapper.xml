@@ -21,7 +21,7 @@
         <result property="status" column="status"/>
     </resultMap>
 
-    <select id="listInputApply" resultMap="InputApplyMapper">
+    <select id="listInputApply"  parameterType="int" resultMap="InputApplyMapper">
     SELECT
 	ui.user_name AS applicant,
 	uii.user_name AS supplier,
@@ -32,8 +32,18 @@
 	LEFT JOIN sneakers s ON s.sneakers_id = ia.sneakers_id
 	LEFT JOIN user_info ui ON ui.user_id = ia.applicant_id
 	LEFT JOIN user_info uii ON uii.user_id = ia.supplier_id
-    WHERE
-	ia.`status` = '待审核'
+    <trim prefix="where" prefixOverrides="and | or">
+        <if test="code == 1 ">
+            and (ia.`status` = '待审核' or ia.`status` = '已退回') and ia.applicant_id = #{applicantId}
+        </if>
+        <if test="code == 2 ">
+            and ia.`status` = '待审核'
+        </if>
+        <if test="code == 3">
+            and  ia.`status` = '已确认'
+        </if>
+    </trim>
+
     ORDER BY
 	ia.input_id DESC
     </select>
@@ -57,4 +67,31 @@ VALUES
             AND ia.`status` = '已确认' GROUP BY ia.sneakers_id
         </trim>
     </select>
+
+    <select id="sumInputApply" resultMap="InputApplyMapper" parameterType="map">
+        SELECT SUM(ia.num) AS sum_num FROM `input_apply` ia
+        <trim prefix="WHERE" prefixOverrides="AND">
+            <if test="startTime != null">
+                AND ia.apply_time  <![CDATA[>=]]> #{startTime}
+                AND ia.apply_time  <![CDATA[<=]]> #{endTime}
+            </if>
+            AND ia.`status` = '已确认' GROUP BY ia.sneakers_id
+        </trim>
+    </select>
+
+    <update id="updateInputApply" parameterType="com.lhc.sneakers.entity.InputApply" useGeneratedKeys="true" keyColumn="inputId">
+        UPDATE `input_apply` SET  `supplier_id` = #{supplierId}, `sneakers_id` = #{sneakersId},
+        `color` = #{color}, `size` = #{size}, `num` = #{num}, `num_unit` = #{numUnit}, `apply_time` = #{applyTime},
+        `price` = #{price}, `total_price` = #{totalPrice}, `net_weight` = #{netWeight}, `invoice_number` = #{invoiceNumber},
+        `position` = #{position}, `status` = #{status} WHERE `input_id` = #{inputId};
+    </update>
+
+    <delete id="deleteInputApply" parameterType="int" >
+        delete from input_apply where input_id = #{inputApplyId};
+    </delete>
+
+    <update id="updateInputStatus" parameterType="map" useGeneratedKeys="true" keyColumn="inputId">
+         UPDATE `input_apply` SET  `status` = #{status} WHERE `input_id` = #{inputApplyId};
+    </update>
+
 </mapper>

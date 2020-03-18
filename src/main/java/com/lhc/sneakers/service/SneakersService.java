@@ -9,4 +9,10 @@ public interface SneakersService {
     PageInfo<Sneakers> listSneakers(int pageNo, int pageSize);
 
     Sneakers getSneaker(int sneakerId);
+
+    void addSneakers(Sneakers sneakers);
+
+    void upDateSneakers(Sneakers sneakers);
+
+    void  deleteSneakers(int sneakersId);
 }

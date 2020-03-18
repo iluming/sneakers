@@ -10,16 +10,18 @@ import java.sql.Date;
 @Data
 public class Sneakers {
     private int sneakersId;
+    private String sneakersNum;
     private int speciesId;
     private int brandId;
     private String sneakersName;
 
     @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
-    private int sneakersListedTime;
+    private Date sneakersListedTime;
     private BigDecimal sneakersPrice;
 
     @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date updateTime;
+    private int createUserId;
     private int sneakersInventory;
 
     @Transient

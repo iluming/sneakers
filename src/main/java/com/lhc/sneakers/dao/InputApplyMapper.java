@@ -10,8 +10,16 @@ import java.util.Map;
 @Mapper
 @Repository
 public interface InputApplyMapper {
-    List<InputApply> listInputApply();
+    List<InputApply> listInputApply(Map map);
     void addInputApply(InputApply inputApply);
 
     List<InputApply> yesInputApply(Map map);
+
+    InputApply sumInputApply(Map map);
+
+    void updateInputApply(InputApply inputApply);
+
+    void deleteInputApply(int inputApplyId);
+
+    void updateInputStatus(Map map);
 }

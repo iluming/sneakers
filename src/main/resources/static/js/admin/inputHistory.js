@@ -12,7 +12,7 @@ $(function(){
         },
         methods: {
             list:function(pageNo){
-                var url =  this.uri + "?pageNo="+pageNo+"&code="+1;
+                var url =  this.uri + "?pageNo="+pageNo+"&code="+3;
                 axios.get(url).then(function(response) {
                     vue.inputApplies = response.data.date.inputApplyPageInfo.list;
                     vue.pages =  response.data.date.inputApplyPageInfo;
@@ -23,17 +23,6 @@ $(function(){
             },
             jumpByNumber: function(start){
                 jumpNum(start,vue);
-            },
-            deleteInput:function (id) {
-                var url = this.uri+"/"+id;
-                axios.delete(url).then(function(response){
-                    if(0!=response.data.length){
-                        alert(response.data);
-                    }
-                    else{
-                        vue.list(1);
-                    }
-                });
             }
 
         }

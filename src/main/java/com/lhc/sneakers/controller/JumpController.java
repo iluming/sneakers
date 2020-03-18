@@ -64,5 +64,10 @@ public class JumpController {
         return "admin/inventoryInfo";
     }
 
+    @GetMapping(value = "/personInfo")
+    public String personInfo(){
+        return "admin/personInfo";
+    }
+
 
 }

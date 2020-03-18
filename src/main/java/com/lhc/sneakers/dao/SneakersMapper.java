@@ -11,4 +11,8 @@ import java.util.List;
 public interface SneakersMapper {
     List<Sneakers> listSneakers();
     Sneakers getSneakers(int sneakersId);
+
+    void addSneakers(Sneakers sneakers);
+    void upDateSneakers(Sneakers sneakers);
+    void  deleteSneakers(int sneakersId);
 }
