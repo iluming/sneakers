@@ -52,7 +52,7 @@ public class InputApplyController {
         return ResultUtil.success(map);
     }
 
-    @PostMapping("/addInputApply")
+    @PostMapping("/listInputApply")
     public Object addInputApply(@RequestBody InputApply inputApply, HttpServletRequest request){
         UserInfo userInfo = (UserInfo) request.getSession().getAttribute("UserInfo");
         int userId = userInfo.getUserId();

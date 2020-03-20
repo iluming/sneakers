@@ -1,4 +1,4 @@
-package com.lhc.sneakers.service.img;
+package com.lhc.sneakers.service.imp;
 
 import com.lhc.sneakers.dao.UserInfoMapper;
 import com.lhc.sneakers.entity.UserInfo;
@@ -16,6 +16,11 @@ public class UserInfoServiceImp implements UserInfoService {
     @Override
     public List<UserInfo> listUser() {
         return null;
+    }
+
+    @Override
+    public List<UserInfo> listApplyUser() {
+        return  userInfoMapper.listApplyUser();
     }
 
     @Override

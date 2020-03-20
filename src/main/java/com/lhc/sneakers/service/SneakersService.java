@@ -8,6 +8,8 @@ import java.util.List;
 public interface SneakersService {
     PageInfo<Sneakers> listSneakers(int pageNo, int pageSize);
 
+    List<Sneakers> listSneakers();
+
     Sneakers getSneaker(int sneakerId);
 
     void addSneakers(Sneakers sneakers);

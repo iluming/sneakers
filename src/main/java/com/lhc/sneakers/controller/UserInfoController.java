@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.sql.Date;
+import java.util.List;
 import java.util.Map;
 
 import static com.sun.xml.internal.ws.api.model.wsdl.WSDLBoundOperation.ANONYMOUS.required;
@@ -46,5 +47,11 @@ public class UserInfoController {
         userInfo.setPwd(EncrypeUtil.shaEncode(userInfo.getPwd()));
         userInfoService.addUser(userInfo);
         return ResultUtil.success("注册成功，等待管理员通过");
+    }
+
+    @GetMapping("/listApplyUser")
+    public Object listApplyUser(){
+        List<UserInfo> userInfoList = userInfoService.listApplyUser();
+        return ResultUtil.success(userInfoList);
     }
 }

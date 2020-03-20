@@ -19,7 +19,25 @@
     </resultMap>
 
     <select id="listUser" resultMap="UserInfoMapper" >
-        select * from user_info;
+SELECT
+	ui.*,
+	IFNULL(r.role_name ,'普通用户') as role_name
+FROM
+	user_info ui
+	LEFT JOIN user_role ur ON ur.user_id = ui.user_id
+	LEFT JOIN role r ON r.role_id = ur.role_id
+    </select>
+
+    <select id="listApplyUser" resultMap="UserInfoMapper" >
+SELECT
+	ui.user_id,
+	ui.user_name
+	-- IFNULL(r.role_name ,'普通用户') as role_name
+FROM
+	user_info ui
+	LEFT JOIN user_role ur ON ur.user_id = ui.user_id
+	LEFT JOIN role r ON r.role_id = ur.role_id
+	WHERE role_name = '供应商'
     </select>
 
     <insert id="addUser" parameterType="com.lhc.sneakers.entity.UserInfo"  useGeneratedKeys="true" keyColumn="userId">

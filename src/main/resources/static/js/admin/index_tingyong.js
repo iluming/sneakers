@@ -1,6 +1,6 @@
 layui.use('element', function() {
         var $ = layui.jquery;
-        var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+        var element = layui.element(); //Tab的切换功能，切换事件监听等，需要依赖element模块
 
         //触发事件
         var active = {

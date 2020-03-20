@@ -4,20 +4,21 @@
 
 <body>
 <section class="layui-larry-box" >
-	<div class="larry-personal" id="inputApply" >
-	    <div class="layui-tab">
+    <div class="larry-personal" id="inputApply">
+        <div class="layui-tab">
             <blockquote class="layui-elem-quote news_search">
-		
-		<div class="layui-inline">
-		    <div class="layui-input-inline">
-		    	<input value="" placeholder="请输入申请编号，即ID" class="layui-input search_input" type="text">
-		    </div>
-		    <a class="layui-btn search_btn">查询</a>
-		</div><div class="layui-inline">
-			<a class="layui-btn layui-btn-normal newsAdd_btn">入库申请</a>
-		</div>
 
-	</blockquote>
+                <div class="layui-inline">
+                    <div class="layui-input-inline">
+                        <input value="" placeholder="请输入申请编号" class="layui-input search_input" type="text">
+                    </div>
+                    <a class="layui-btn search_btn">查询</a>
+                </div>
+                <div class="layui-inline">
+                    <a class="layui-btn layui-btn-normal newsAdd_btn" onclick="addInput()" >入库申请</a>
+                </div>
+
+            </blockquote>
             
 		    <div class="layui-tab-content larry-personal-body clearfix mylog-info-box">
 		         <!-- 操作日志 -->
@@ -79,6 +80,28 @@
 	</div>
 </section>
 
+<script>
+    function addInput() {
+        layui.use("layer",function() {
+            var layer = layui.layer;  //layer初始化
+
+            layer.open({
+                type: 2,
+                shadeClose: true,
+
+                shade: false,
+
+                maxmin: true, //开启最大化最小化按钮
+
+                area: ['893px', '600px'],
+                content: '/sneakerWarehouse/addInput', //这里content是一个普通的String
+                end: function () {
+                    location.reload();
+                },
+            });
+        })
+    }
+</script>
 <script type="text/javascript" src="../static/js/admin/inputApply.js" th:src="@{/js/admin/inputApply.js}"></script>
 
 

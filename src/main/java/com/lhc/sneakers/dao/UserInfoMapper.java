@@ -10,8 +10,12 @@ import java.util.List;
 @Repository
 public interface UserInfoMapper {
     List<UserInfo> listUser();
+
+    List<UserInfo> listApplyUser();
+
     void addUser(UserInfo userInfo);
     UserInfo getUser(UserInfo userInfo);
 
     UserInfo doLogin(UserInfo userInfo);
+
 }

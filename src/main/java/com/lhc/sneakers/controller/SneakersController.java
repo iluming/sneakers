@@ -25,7 +25,7 @@ public class SneakersController {
 
     /**
      *
-     * @param pageNo   要显示第几页内容
+     * @param pageNo   要显示第几页内容,当是 999时，不用分页
      * @param pageSize    一页显示多少条
      * @return
      */
@@ -33,9 +33,14 @@ public class SneakersController {
     public Map listSneakers(@RequestParam(value="pageNo",defaultValue="1")int pageNo,
                             @RequestParam(value="pageSize",defaultValue="10")int pageSize) {
         Map map = new HashMap();
-       PageInfo<Sneakers> sneakersPageInfo = sneakersService.listSneakers(pageNo,pageSize);
-       map.put("sneakersPageInfo",sneakersPageInfo);
-        map.put("listSneakers",sneakersPageInfo.getList());
+        if (pageNo == 999){ //不用分页
+            List<Sneakers> sneakersList = sneakersService.listSneakers();
+            map.put("sneakersList",sneakersList);
+        }else {
+            PageInfo<Sneakers> sneakersPageInfo = sneakersService.listSneakers(pageNo,pageSize);
+            map.put("sneakersPageInfo",sneakersPageInfo);
+            map.put("listSneakers",sneakersPageInfo.getList());
+        }
         return map;
     }
 

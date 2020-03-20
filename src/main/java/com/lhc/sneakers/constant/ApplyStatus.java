@@ -7,4 +7,9 @@ public class ApplyStatus {
     public static final String REFUSED = "被拒绝";//确认
     public static final String TURN_BACK = "已退回";//不良品退回
 
+    public static final String IDLE = "闲置";//确认
+    public static final String SPARE = "空余";//确认
+    public static final String SATURATION = "饱和";//确认
+
+
 }

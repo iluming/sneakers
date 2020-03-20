@@ -69,5 +69,10 @@ public class JumpController {
         return "admin/personInfo";
     }
 
+    @GetMapping(value = "/addInput")
+    public String addInput(){
+        return "admin/addInput";
+    }
+
 
 }

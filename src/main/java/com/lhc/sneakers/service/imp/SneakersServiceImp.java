@@ -1,4 +1,4 @@
-package com.lhc.sneakers.service.img;
+package com.lhc.sneakers.service.imp;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -8,9 +8,7 @@ import com.lhc.sneakers.service.SneakersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class SneakersServiceImp implements SneakersService {
@@ -24,6 +22,11 @@ public class SneakersServiceImp implements SneakersService {
         //用PageInfo对结果进行包装
         PageInfo<Sneakers> page = new PageInfo<Sneakers>(sneakersList);
         return page;
+    }
+
+    @Override
+    public List<Sneakers> listSneakers() {
+        return sneakersMapper.listSneakers();
     }
 
     @Override
